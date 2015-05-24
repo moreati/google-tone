@@ -18,9 +18,12 @@ def graph_spectrogram(wav_file):
     pylab.figure(num=None, figsize=(19, 12))
     pylab.subplot(111)
     pylab.title('spectrogram of %r' % wav_file)
-    pylab.specgram(sound_info, Fs=frame_rate)
+    spylab.specgram(sound_info, Fs=frame_rate,
+                    NFFT=4096, noverlap=4000,
+                    )
+    x1, x2, y1, y2 = pylab.axis()
+    pylab.axis((0.1, 1.85, 600, 2600))
     file_name, file_ext = os.path.splitext(wav_file)
-    
     pylab.savefig('%s.%s' % (file_name, 'png'))
 
 
